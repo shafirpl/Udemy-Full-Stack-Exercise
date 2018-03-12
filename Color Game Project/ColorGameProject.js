@@ -1,4 +1,10 @@
 //alert("Connected");
+//This is the initial colors, but we don't want
+//the squares to be the same color order all the time
+//when the page loads, so we used a function so all the
+//squares have different color when we load up the page every
+//time
+/*
 var colors = [
   "rgb(255, 0, 0)",
   "rgb(255, 255, 0)",
@@ -8,6 +14,11 @@ var colors = [
   "rgb(255, 0, 255)",
 
 ]
+*/
+
+//this would generate random colors array
+
+var colors = generateRandomColors(6);
 
 var squares = document.querySelectorAll(".square");
 var pickedColor = pickColor();
@@ -77,4 +88,38 @@ function pickColor(){
 */
  var random = Math.floor(Math.random() * colors.length);
  return colors[random];
+}
+
+/* This function would generate random colors for the squares,
+* it basically generates an array of random colors and returns it
+* @param: The length of the array
+*/
+function generateRandomColors(length){
+  //make an array
+  var arr = [];
+  //add random colors to the array
+  for(var i = 0; i<length; i++){
+    //generate random color and push to the array
+    //since we are basically imitating an array like colors = ["rgb(255, 0, 0)",], for
+    //organizing our code we created a separate function to push the individual color to
+    //our array
+  }
+  //return the array
+  return arr;
+}
+/* This function generates a random rgb color
+* to test the function, just type randomColor() in the chrome console to see
+* the result
+*/
+function randomColor(){
+  //pick a random red from 0-255
+  //recall that in order to get a number between 0 to 255, we multiply math.random with n+1, or 256
+  var red = Math.floor(Math.random()*256);
+  //pick a random green from 0-255
+  var green = Math.floor(Math.random()*256);
+  //pick a random blue from 0-255
+  var blue = Math.floor(Math.random()*256);
+
+  //now since we are pushing "rgb(r, g, b)" format, we need string stuff
+  return "rgb("+red + ", "+ green + ", "+blue +")";
 }
