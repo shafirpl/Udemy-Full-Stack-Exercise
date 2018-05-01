@@ -1,5 +1,7 @@
 body{
   background-color: #232323;
+  margin: 0px;
+  font-family: "Montserrat", "Avenir"
 }
 
 .square{
@@ -8,16 +10,93 @@ body{
   padding-bottom: 30%;
   float: left;
   margin: 1.66%;
+  /* border-radius gives the squares a rounded corner */
+  border-radius: 15%;
+
+  transition: background 0.7s;
+  /* This means only when the background-color changes, this change should take 0.4 seconds */
+
+  /* This is for safari for the transition to work */
+  -webkit-transition: background 0.7s;
+    /* This is for mozilla firefox for the transition to work */
+  -moz-transition: background 0.7s;
 }
 
 #container{
   max-width: 600px;
-  margin: 0 auto;
-}
-h1{
-  color: white;
+  margin: 20px auto;
 }
 
-span{
+#colorDisplay{
+  font-size: 200%;
+  /* This is 200% larger relative to h1 font size */
+}
+
+h1{
   color: white;
+  text-align: center;
+  background: steelblue;
+  margin: 0px;
+  font-weight: normal;
+  text-transform: uppercase;
+  line-height: 1.1;
+  /* line-height is for adding spaces between lines */
+  padding:20px 0;
+  /* this means 20px on top and bottom, 0 px on left and right  */
+
+}
+
+/* span{
+  color: white;  specificity issue
+  color: black;
+} */
+
+#stripe{
+  text-align: center;
+  background-color: white;
+  height: 30px;
+  /* color: black; won't work as it has lower priority that the span thing */
+  color: black;
+
+}
+
+.selected{
+  color: white;
+  background: steelblue;
+}
+
+button {
+  border: none;
+  text-transform: uppercase;
+  /* This will make the button text to cover the entire h1 */
+  height: 100%;
+  font-weight: 700;
+  color: steelblue;
+  letter-spacing: 1px;
+  font-size: inherit;
+  transition: all 0.4s;
+  /* This means when any property change, for example background-color, this change should take 0.4 seconds */
+
+  -webkit-transition: all 0.7s;
+    /* This is for mozilla firefox for the transition to work */
+  -moz-transition: all 0.7s;
+  outline: none;
+}
+
+/* This will make the appropriate spacing between the difficulty level and the try again writing, the width 20% means
+our span will take 20% of the screen or there is a box between the new game and difficulty level which is
+20% width */
+
+#messageDisplay{
+  display: inline-block;
+  width: 20%;
+}
+/*
+Adds hover effect to the buttons */
+
+button:hover{
+  /* This will change the text color to white when we put our mouse there */
+  color: white;
+  /* This will make the whole box or background to be blue when we hove the mouse */
+  background: steelblue;
 }

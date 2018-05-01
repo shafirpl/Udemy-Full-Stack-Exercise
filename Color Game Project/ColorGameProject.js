@@ -15,20 +15,152 @@ var colors = [
 
 ]
 */
+//variable declarations
 
 //this would generate random colors array
-
-var colors = generateRandomColors(6);
+var numSquares = 6;
+var pickedColor;
+var colors;
+var h1 = document.querySelector("h1");
 
 var squares = document.querySelectorAll(".square");
-var pickedColor = pickColor();
 //var pickedColor = colors[3];
 var colorDisplay = document.querySelector("#colorDisplay");
 var messageDisplay = document.querySelector("#messageDisplay");
+var resetButton = document.querySelector("#reset");
+// var easyBtn = document.querySelector("#easy");
+// var hardBtn = document.querySelector("#hard");
+var mode = document.querySelectorAll(".mode");
 
+init();
+
+function init(){
+  //mode buttons
+  modeButtons();
+  //reset button add event listener
+  resetButton.addEventListener("click",function(){
+    reset();
+    // //resetting the whole game by
+    // // Generate random new colors
+    // colors = generateRandomColors(numSquares);
+    // //This will put the message new colors when someone clicks the reset button
+    // this.textContent = "NEW COLORS";
+    // messageDisplay.textContent = "";
+    // //pick a random color from array
+    // pickedColor = pickColor();
+    // colorDisplay.textContent = pickedColor;
+    // //change colors of squares
+    // for(var i = 0; i<squares.length;i++){
+    //   //add initial colors to squares
+    //   squares[i].style.backgroundColor = colors[i];
+    // }
+    // h1.style.background = "steelblue";
+  });
+gameLogic();
+}
+
+
+
+
+function reset(){
+  //resetting the whole game by
+  // Generate random new colors
+  colors = generateRandomColors(numSquares);
+  //This will put the message new colors when someone clicks the reset button
+  resetButton.textContent = "NEW COLORS";
+  messageDisplay.textContent = "";
+  //pick a random color from array
+  pickedColor = pickColor();
+  colorDisplay.textContent = pickedColor;
+  //change colors of squares
+  for(var i = 0; i<squares.length;i++){
+    //add initial colors to squares
+    //squares[i].style.backgroundColor = colors[i];
+    /* If and only if we have a color at index i, then we will change it,
+    for example, when i = 4, colors[i] = NULL or false, so it won't change the color
+     */
+       if(colors[i]){
+         squares[i].style.backgroundColor = colors[i];
+         squares[i].style.display = "block";
+       }
+
+       //hiding the colors
+       else{
+         squares[i].style.display = "none";
+       }
+  }
+  h1.style.background = "steelblue";
+  //reset button event listener
+}
+
+function modeButtons(){
+  for(var i = 0; i<mode.length;i++){
+    mode[i].addEventListener("click",function(){
+      for(var j = 0; j<mode.length;j++){
+        mode[j].classList.remove("selected");
+      }
+      this.classList.add("selected");
+      //figure out how many squares to show
+      //pick new colors
+      //pick a new pickedColor
+      //update page to reflect changes
+      this.textContent === "Easy" ? numSquares = 3: numSquares = 6;
+      reset();
+    });
+  }
+}
+//chossing easy or hard mode
+// easyBtn.addEventListener("click",function(){
+//   hardBtn.classList.remove("selected");
+//   easyBtn.classList.add("selected");
+//   numSquares = 3;
+//   //changing the colors and hiding the bottom 3 squares
+//
+//   // Generate random new colors
+//   colors = generateRandomColors(numSquares);
+//   //pick a random color from array
+//   pickedColor = pickColor();
+//   for(var i = 0; i<squares.length;i++){
+//     /* If and only if we have a color at index i, then we will change it,
+//     for example, when i = 4, colors[i] = NULL or false, so it won't change the color
+//     */
+//     if(colors[i]){
+//       squares[i].style.backgroundColor = colors[i];
+//     }
+//
+//     //hiding the colors
+//     else{
+//       squares[i].style.display = "none";
+//     }
+//   }
+//    colorDisplay.textContent = pickedColor;
+// });
+//
+// hardBtn.addEventListener("click",function(){
+//   easyBtn.classList.remove("selected");
+//   hardBtn.classList.add("selected");
+//   numSquares = 6;
+//   //changing the colors and hiding the bottom 3 squares
+//
+//   // Generate random new colors
+//   colors = generateRandomColors(numSquares);
+//   //pick a random color from array
+//   pickedColor = pickColor();
+//   for(var i = 0; i<squares.length;i++){
+//     squares[i].style.backgroundColor = colors[i];
+//     squares[i].style.display = "block";
+//  }
+//
+//    colorDisplay.textContent = pickedColor;
+// });
+
+
+//resetting the game when the user presses the new game or play again button
+
+function gameLogic(){
+reset();
 for(var i = 0; i<squares.length;i++){
-  //add initial colors to squares
-  squares[i].style.backgroundColor = colors[i];
+
 
   //add click listeners to squares
   squares[i].addEventListener("click",function(){
@@ -37,11 +169,14 @@ for(var i = 0; i<squares.length;i++){
 
     //grab color of picked squares
     var clickedColor = this.style.backgroundColor;
+    console.log(pickedColor,clickedColor);
     //compare color to pickedColor for game logic
     if(clickedColor===pickedColor){
       //correct guess
       messageDisplay.textContent = "Correct";
       changeColors(pickedColor);
+      h1.style.background = pickedColor;
+      resetButton.textContent = "Play Again?";
     }
     else{
       //wrong guess, we are fading this box, the way to do this is to match it with the background color of
@@ -51,6 +186,7 @@ for(var i = 0; i<squares.length;i++){
 
     }
   });
+}
 }
 
 colorDisplay.textContent = pickedColor;
@@ -103,6 +239,7 @@ function generateRandomColors(length){
     //since we are basically imitating an array like colors = ["rgb(255, 0, 0)",], for
     //organizing our code we created a separate function to push the individual color to
     //our array
+    arr.push(randomColor());
   }
   //return the array
   return arr;
@@ -121,5 +258,5 @@ function randomColor(){
   var blue = Math.floor(Math.random()*256);
 
   //now since we are pushing "rgb(r, g, b)" format, we need string stuff
-  return "rgb("+red + ", "+ green + ", "+blue +")";
+  return "rgb("+ red + ", "+ green + ", "+blue +")";
 }

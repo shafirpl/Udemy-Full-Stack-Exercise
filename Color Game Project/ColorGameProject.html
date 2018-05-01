@@ -7,11 +7,23 @@
   </head>
   <body>
     <!-- The span here is to change the text to reflect the color the game wants the player to guess -->
-    <h1>The Great <span id="colorDisplay">RGB</span> Color Game</h1>
+    <h1>The Great
+      <br>
+      <span id="colorDisplay">RGB</span>
+      <br>
+      Color Game</h1>
+    <div id="stripe">
+      <!-- This button is to reset the game -->
+      <button type="button" name="button" id="reset">New Colors</button>
+      <!-- this is for the game status message try again or correct, it will start empty first,
+      then based on the game it will change, so we have an empty span here -->
+      <span id="messageDisplay"></span>
+      <button type="button" name="button" class="mode">Easy</button>
+      <button type="button" name="button" class="mode selected" id="hard">Hard</button>
 
-    <!-- this is for the game status message try again or correct, it will start empty first,
-    then based on the game it will change, so we have an empty span here -->
-    <span id="messageDisplay"></span>
+    </div>
+
+
     <div id="container" class="">
       <div class="square">
 
