@@ -1,4 +1,12 @@
 /* for testing purpose */
-body{
+/* body{
   background: purple;
+} */
+
+#container{
+  /* background: gray; */
+  border: 2px solid gray;
+  width: 360px;
+  /* This will center the div */
+  margin: 0 auto;
 }
