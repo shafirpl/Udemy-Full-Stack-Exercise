@@ -10,3 +10,8 @@
   /* This will center the div */
   margin: 0 auto;
 }
+
+.completed{
+  text-decoration: line-through;
+  color: gray;
+}

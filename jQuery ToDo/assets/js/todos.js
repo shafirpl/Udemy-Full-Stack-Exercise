@@ -4,6 +4,7 @@
 //Check off specific list item when clicked on
 
 $("li").click(function(){
-  $(this).css("color","gray");
-  $(this).css("text-decoration","line-through");
+  $(this).toggleClass("completed");
 });
+
+//click on trash can item to delete stuff
