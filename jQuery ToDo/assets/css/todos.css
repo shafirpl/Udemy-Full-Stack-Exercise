@@ -3,15 +3,112 @@
   background: purple;
 } */
 
-#container{
-  /* background: gray; */
-  border: 2px solid gray;
-  width: 360px;
-  /* This will center the div */
-  margin: 0 auto;
+body{
+  font-family: 'Roboto', sans-serif;
+  /* This is copied from https://uigradients.com/#Kyoto */
+  background: #c21500;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #ffc500, #c21500);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #ffc500, #c21500); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+
+h1{
+  background: #2980b9;
+  color: white;
+  margin: 0;
+  padding: 10px 20px;
+  text-transform: uppercase;
+  font-size: 24px;
+  font-weight: normal;
+}
+
+ul{
+  /* This will get rid of the bullet point */
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+li{
+  background: #fff;
+  /* this is equivalent to #ffffff */
+  height: 40px;
+  line-height: 40px;
+  color: #666;
+  /* this is equivalent to #666666 */
+}
+
+input{
+  font-size: 18px;
+  background: #f7f7f7;
+  width: 100%;
+  padding: 13px 13px 13px 20px;
+  box-sizing: border-box;
+  color: #2980b9;
+  /* this fixes the small gap problem */
+  border: 3px solid rgba(0,0,0,0);
+}
+
+span{
+  background: #e74c3c;
+  height: 40px;
+  margin-right: 20px;
+  text-align: center;
+  color: white;
+  width: 0;
+  display: inline-block;
+  transition: 0.2s linear;
+  opacity: 0;
 }
 
 .completed{
   text-decoration: line-through;
   color: gray;
+}
+
+/* This will move the plus icon to the right */
+.fa-plus{
+  float: right;
+}
+
+#container{
+  /* background: gray; */
+  border: 2px solid gray;
+  width: 360px;
+  background: #f7f7f7;
+  /* This will center the div */
+  margin: 100px auto;
+  box-shadow: 0 0 3px, rgba(0,0,0,0.1);
+
+}
+
+/* This will select every other or every 2nd li */
+li:nth-child(2n){
+  background: #f7f7f7;
+}
+
+
+
+input:focus{
+  background: #fff;
+  border: 3px solid #2980b9;
+  outline: none;
+}
+
+
+
+/* Creating the animation which is activated
+when the user hovers over to delete it */
+
+/* this will make the hidden trash can appear when we
+hover over the li */
+
+li:hover span{
+  width: 40px;
+  opacity: 1.0;
+}
+
+/* This will fix the spacing issue created when we were adding the span to select the icon */
+#heading{
+  display:inline;
 }
