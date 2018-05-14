@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="circles.css">
+    <title>Exercise</title>
+    <!-- Load the Paper.js library -->
+    <script type="text/javascript" src="Assets\paperjs-v0.11.5\dist\paper-full.js"></script>
+    <!-- Define inlined PaperScript associate it with myCanvas -->
+    <script type="text/paperscript" canvas="myCanvas">
+	   // Create a Paper.js Path to draw a line into it:
+     for(var i = 0; i<=1000; i+=100){
+       for(var j = 0 ; j<=1000; j+=100){
+         // var myCircle = new Path.Circle(new Point(i, j), 10);
+         // myCircle.fillColor = 'black';
+         //This below line is equivalent to the 2 upper lines, and more effecient
+         //since it is not creating and destroying a variable again and again.
+         new Path.Circle(new Point(i, j), 10).fillColor = 'black';
+
+       }
+     }
+
+
+</script>
+  </head>
+  <body>
+    <canvas id="myCanvas" resize></canvas>
+  </body>
+</html>
